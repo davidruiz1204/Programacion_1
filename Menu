@@ -1,18 +1,64 @@
 from abc import ABC, abstractmethod
 
 class Menu(ABC):
+    def __init__(self, Opciones):
+        self.Opciones = Opciones
+
     @abstractmethod
-    def ejecutar(self):
+    def MenuOpciones(self):
         pass
 
-class MenuBasico(Menu):
-    def __init__(self, opciones):
-        self.opciones = opciones
+class Opcion1(Menu):
+    def __init__(self, Opciones, Opciones1, Sonido, Brillo, Luz_Nocturna):
+        super().__init__(Opciones)
+        self.Opciones1 = Opciones1
+        self.Sonido = Sonido
+        self.Brillo = Brillo
+        self.Luz_Nocturna = Luz_Nocturna
 
-    def ejecutar(self):
-        for opcion in self.opciones:
-            print(f"Ejecutando: {opcion}")
+    def MenuOpciones(self):
+        return f"En las {self.Opciones}. Encontramos las {self.Opciones1}. Donde podremos configurar el nivel del {self.Sonido}, el nivel del {self.Brillo} y activar la {self.Luz_Nocturna}"
 
+class Opcion2(Menu):
+    def __init__(self, Opciones, Opciones2, Wifi, Datos_Moviles, Bluetooh, Zona_Wifi, Modo_Avion):
+        super().__init__(Opciones)
+        self.Opciones2 = Opciones2
+        self.Wifi = Wifi
+        self.Datos_Moviles = Datos_Moviles
+        self.Bluetooh = Bluetooh
+        self.Zona_Wifi = Zona_Wifi
+        self.Modo_Avion = Modo_Avion
+    
+    def MenuOpciones(self):
+        return f"En las {self.Opciones}. Encontramos las {self.Opciones2}. Donde podremos encender o apagar el {self.Wifi}, los {self.Datos_Moviles}, el {self.Bluetooh}, la {self.Zona_Wifi} y el {self.Modo_Avion}"
+    
+class Opcion3(Menu):
+    def __init__(self, Opciones, Opciones3, Fondo_Pantalla, Fondo_Bloqueo):
+        super().__init__(Opciones)
+        self.Opciones3 = Opciones3
+        self.Fondo_Pantalla = Fondo_Pantalla
+        self.Fondo_Bloqueo = Fondo_Bloqueo
 
-menu = MenuBasico(['Opción 1', 'Opción 2', 'Opción 3',"opcion 4"])
-menu.ejecutar()
+    def MenuOpciones(self):
+        return f"En las {self.Opciones}. Encontramos las {self.Opciones3}. Allí popdremos cambiar los fondos, ya sea el {self.Fondo_Pantalla} o el {self.Fondo_Bloqueo}"
+    
+class Opcion4(Menu):
+    def __init__(self, Opciones, Opciones4, Modelo, Estado_SIM, Versio_Android):
+        super().__init__(Opciones)
+        self.Opciones4 = Opciones4
+        self.Modelo = Modelo
+        self.Estado_SIM = Estado_SIM
+        self.Version_Android = Versio_Android
+    
+    def MenuOpciones(self):
+        return f"En las {self.Opciones}. Encontramos las {self.Opciones4}. En donde podremos ver todo acerca del teléfono, como el Modelo: {self.Modelo}, el Estado de la SIM: {self.Estado_SIM} y la version del Android: {self.Version_Android}"
+    
+opciones_1 = Opcion1("Opciones", "Opciones 1", "Sonido", "Brillo", "Luz Nocturna")
+opciones_2 = Opcion2("Opciones", "Opciones2", "Wifi", "Datos Moviles", "Bluetooh", "Zona de Wifi", "Modo Avion")
+opciones_3 = Opcion3("Opciones", "Opciones3", "Fondo de Pantalla", "Fondo de Bloqueo")
+opciones_4 = Opcion4("Opciones", "Opciones 4", "MotorolaG72", "Tigo", "13")
+
+print(opciones_1.MenuOpciones())
+print(opciones_2.MenuOpciones())
+print(opciones_3.MenuOpciones())
+print(opciones_4.MenuOpciones())
