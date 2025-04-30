@@ -1,0 +1,41 @@
+class Cuenta:
+    def __init__(self, nombre):
+        self.__usuarios = { "Natalia": 2705, "david": 1206,"duvan": 1131 }
+        self.__usuario = None
+
+        if nombre.lower() in self.__usuarios:
+            self.__usuario = nombre.lower()
+            print("Cuenta creada satisfactoriamente")
+        else:
+            print("Acceso Rechazado.")
+
+    def mostrar_usuario(self):
+        if self.__usuario:
+            print(f" Usuario: {self.__usuario}")
+        else:
+            print("No hay un usuario válido.")
+
+    def validar_contraseña(self, contraseña_ingresada):
+        if not self.__usuario:
+            print("No se puede validar contraseña sin un usuario válido.")
+            return
+
+        contraseña_correcta = self.__usuarios[self.__usuario]
+        if contraseña_ingresada == contraseña_correcta:
+            print(" Contraseña correcta. Acceso concedido.")
+        else:
+            print(" Contraseña incorrecta.")
+
+# 🔹 Uso del programa
+nombre = input("👉 Ingresar tu nombre: ")
+cuenta = Cuenta(nombre)
+
+cuenta.mostrar_usuario()
+
+contraseña_input = input("Ingresar tu contraseña (número): ")
+
+if contraseña_input.isdigit():
+    contraseña = int(contraseña_input)
+    cuenta.validar_contraseña(contraseña)
+else:
+    print("La contraseña debe ser un número válido.")
