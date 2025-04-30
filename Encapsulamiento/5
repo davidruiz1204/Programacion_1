@@ -1,0 +1,42 @@
+class MenuOpciones:
+    def __init__(self):
+        self.__validas = ["saludar", "despedir", "informar"]
+        self.__opcion = "saludar"  # Opción por defecto
+
+    def get_opcion(self):
+        return self.__opcion
+
+    def set_opcion(self, nueva_opcion):
+        if nueva_opcion.lower() in self.__validas:
+            self.__opcion = nueva_opcion.lower()
+            print(f"Opción cambiada a: {self.__opcion}")
+        else:
+            print(f"'{nueva_opcion}' no es una opción válida. Opciones disponibles: {self.__validas}")
+
+
+    def ejecutar_accion(self):
+        if self.__opcion == "saludar":
+            print("Hola, ¿Cómo vas?")
+        elif self.__opcion == "despedir":
+            print(" Adios, Cuídate.")
+        elif self.__opcion == "informar":
+            print("Hoy es un gran día para aprender a programar.")
+        else:
+            print("No hay acción definida para esta opción.")
+
+
+menu = MenuOpciones()
+
+print(f"\n Opción actual: {menu.get_opcion()}")
+menu.ejecutar_accion()
+
+
+menu.set_opcion("despedir")
+menu.ejecutar_accion()
+
+menu.set_opcion("informar")
+menu.ejecutar_accion()
+
+
+menu.set_opcion("bailar")
+menu.ejecutar_accion()
