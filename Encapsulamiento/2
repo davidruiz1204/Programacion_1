@@ -1,0 +1,31 @@
+class Pago:
+    def __init__(self, titular, cuenta, monto):
+        self.__titular = titular                  
+        self.__cuenta =cuenta      
+        self.__monto = monto                     
+        self.__estado = "Pendiente"               
+
+    def procesar_pago(self):
+        # Simulación de proceso de pago
+        self.__estado = "Pago realizado"
+
+    def anular_pago(self):
+        if self.__estado == "Pago realizado":
+            self.__estado = "Pago rechasado"
+        else:
+            print(" No se puede anular un pago que no ha sido procesado.")
+
+    def mostrar_estado(self):
+        print(f"Titular: {self.__titular}")
+        print(f"Cuenta: ****{self.__cuenta[-4:]}")
+        print(f"Monto: ${self.__monto:,.2f}")
+        print(f"Estado: {self.__estado}")
+
+
+pago2 = Pago("Natalia Tovar", "1100101601005", 385000)
+pago2.procesar_pago()
+pago2.mostrar_estado()
+
+print("\n--- Anulando el pago ---")
+pago2.anular_pago()
+pago2.mostrar_estado()
