@@ -1,0 +1,46 @@
+from abc import ABC, abstractmethod
+
+class Estudiante(ABC):
+    def __init__(self, notas):
+        self.__notas = notas  
+
+    def get_notas(self):
+        return self.__notas
+
+    def set_notas(self, nuevas_notas):
+        if isinstance(nuevas_notas, list):
+            self.__notas = nuevas_notas
+
+    @abstractmethod
+    def calcular_promedio(self):
+        pass
+
+class EstudiantePromedio(Estudiante):
+    def __init__(self, nombre, notas):
+        super().__init__(notas)
+        self.__nombre = nombre  
+
+    def get_nombre(self):
+        return self.__nombre
+
+    def calcular_promedio(self):
+        notas = self.get_notas()
+        return sum(notas) / len(notas)
+
+    def mostrar_datos(self):
+        print(f"Nombre: {self.get_nombre()}")
+        print(f"Notas: {self.get_notas()}")
+        print(f"Promedio: {self.calcular_promedio():.2f}")
+
+
+estudiante1 = EstudiantePromedio("Natalia Tovar", [3.8, 4.2, 4.1, 4.2, 4.9])
+estudiante2 = EstudiantePromedio("Duvan Hurtado", [4.0, 3.9, 4.1, 4.3, 4.0])
+estudiante3 = EstudiantePromedio("Laura Ruiz", [3.5, 3.8, 4.0, 3.9, 4.1])
+
+
+estudiante1.mostrar_datos()
+print("------")
+estudiante2.mostrar_datos()
+print("------")
+estudiante3.mostrar_datos()
+print("------")
