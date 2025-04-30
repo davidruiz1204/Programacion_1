@@ -1,0 +1,21 @@
+class Factura:
+    def __init__(self, producto, precio):
+        self._producto = producto
+        self._precio = precio
+        self._iva = 0.19
+        self._total = self.__calcular_total_con_iva()
+    def __valor_iva(self):
+        return self._precio * self._iva
+    def __calcular_total_con_iva(self):
+        return self._precio + (self._precio * self._iva)
+    def mostrar_total(self):
+        print(f"Producto: {self._producto}")
+        print(f"Precio sin IVA: ${self._precio:.0f}")
+        print(f"IVA: ${self.__valor_iva():.0f}")
+        print(f"Total producto: ${self._total:.0f}")
+
+producto = input("Ingresae el producto: ")
+precio = float(input("Ingresar el precio del producto: "))
+
+factura = Factura(producto, precio)
+factura.mostrar_total()
